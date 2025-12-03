@@ -1,0 +1,184 @@
+.hero-container {
+  text-align: center;
+  padding: 60px 0;
+  background: linear-gradient(to bottom, #f9fafb, #ffffff); /* 👈 Original pinkish-light tone */
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* ✅ Dark Mode background */
+.dark .hero-container {
+  background: linear-gradient(to bottom, #020817, #020817);
+}
+
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.badge {
+  background: #f3f4f6;
+  color: #F83002;
+  font-weight: 500;
+  padding: 6px 16px;
+  border-radius: 25px;
+  display: inline-block;
+  margin: 0 auto;
+}
+
+.dark .badge {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ff6b6b;
+}
+
+.hero-text h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #111827;
+}
+
+.dark .hero-text h1 {
+  color: #f8fafc;
+}
+
+.hero-text .highlight {
+  color: #6A38C2;
+}
+
+.dark .hero-text .highlight {
+  color: #a78bfa;
+}
+
+.hero-text p {
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+.dark .hero-text p {
+  color: #cbd5e1;
+}
+
+/* 🔹 Search Bar */
+.search-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  background: #ffffff;
+  border: 1.5px solid #e5e7eb;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 50px;
+  padding: 14px 20px;
+  width: 90%;
+  max-width: 900px;
+  margin: 40px auto 0;
+  align-items: center;
+}
+
+/* ✅ Dark Mode Search Bar */
+.dark .search-bar {
+  background: #110d0d;
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+}
+
+.input-group {
+  flex: 1;
+  min-width: 180px;
+}
+
+/* 🔹 React Select */
+.react-select__control {
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 25px !important;
+  background-color: transparent !important;
+  padding-left: 8px;
+  color: #111827 !important;
+}
+
+.dark .react-select__input-container{
+  color: #f8fafc !important;
+}
+.dark .react-select__control {
+  color: #f8fafc !important;
+}
+
+.react-select__placeholder {
+  color: #7f848d !important;
+  font-weight: 400 !important;
+}
+
+.dark .react-select__placeholder {
+  color: #3c5474 !important;
+  font-weight: 500 !important;
+}
+
+.react-select__single-value {
+  color: #111827 !important;
+}
+
+.dark .react-select__single-value {
+  color: #f8fafc !important;
+}
+
+.react-select__menu {
+  border-radius: 10px !important;
+  background: #ffffff !important;
+  color: #111827 !important;
+}
+
+.dark .react-select__menu {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+}
+
+.react-select__option--is-focused {
+  background-color: #f3f4f6 !important;
+}
+
+.dark .react-select__option--is-focused {
+  background-color: #334155 !important;
+}
+
+.react-select__option--is-selected {
+  background-color: #6A38C2 !important;
+  color: white !important;
+}
+
+/* 🔹 Experience Dropdown */
+.experience-select {
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  padding: 8px 12px;
+  background-color: transparent;
+  color: #374151;
+  font-size: 0.95rem;
+}
+
+.dark .experience-select {
+  color: #f8fafc;
+}
+
+/* 🔹 Search Button */
+.search-btn {
+  background-color: #6A38C2 !important;
+  color: white !important;
+  border-radius: 25px !important;
+  padding: 8px 20px !important;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.search-btn:hover {
+  background-color: #5a2fa8 !important;
+}
+
+.search-icon {
+  width: 18px;
+  height: 18px;
+}
