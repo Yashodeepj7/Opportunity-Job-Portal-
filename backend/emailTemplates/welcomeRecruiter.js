@@ -20,7 +20,7 @@ export const welcomeRecruiterEmail = (name) => `
       </div>
 
       <div style="text-align:center">
-        <a href="http://localhost:5173/admin/jobs"
+        <a href="https://opportunity-portal.vercel.app/admin/jobs"
            style="background:#6A38C2; padding:12px 22px; color:white; text-decoration:none; 
                   border-radius:6px; display:inline-block; font-size:15px;">
           Post a Job

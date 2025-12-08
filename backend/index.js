@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 const corsOptions = {
     origin: [
-        "https://opportunity-portal.vercel.app/",
+        "https://opportunity-portal.vercel.app",
         'http://localhost:5173'
         
     ],
