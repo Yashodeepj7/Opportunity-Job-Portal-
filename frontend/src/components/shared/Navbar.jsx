@@ -10,7 +10,7 @@ import { USER_API_END_POINT } from "@/utils/constant";
 import { setUser, logoutUser } from "@/redux/authSlice";
 import { resetJobState } from "@/redux/jobSlice";
 import { toast } from "sonner";
-import { useTheme } from "../../components/Context/ThemeContext.jsx";
+import { useTheme } from "../context/ThemeContext";
 
 const Navbar = ({ hideJobs = false }) => {
   const { user } = useSelector((store) => store.auth);
