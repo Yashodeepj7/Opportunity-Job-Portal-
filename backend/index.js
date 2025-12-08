@@ -20,7 +20,7 @@ app.use(cookieParser());
 const corsOptions = {
     origin: [
         'http://localhost:5173',
-        "https://your-frontend.vercel.app"
+        "https://opportunity-portal.vercel.app/"
     ],
     credentials: true
 }
