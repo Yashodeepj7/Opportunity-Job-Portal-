@@ -5,7 +5,7 @@ import { setSearchedQuery } from "@/redux/jobSlice";
 import axios from "axios";
 import { motion, AnimatePresence } from "framer-motion";
 
-const API = "http://localhost:8000/api/v1/job/options";
+const API = "https://opportunity-backend-f608.up.railway.app/api/v1/job/options";
 
 const filterConfig = [
   { id: "designation", type: "Designation", quick: ["Frontend Developer", "React Developer", "Backend Developer"] },

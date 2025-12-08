@@ -16,18 +16,18 @@ const HeroSection = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // Load Designations
+ 
 // Load Designations
 const loadDesignations = async (inputValue) => {
   try {
     const { data } = await axios.get(
-      `http://localhost:8000/api/v1/job/options?query=${inputValue}&type=designation`
+      `https://opportunity-backend-f608.up.railway.app/api/v1/job/options?query=${inputValue}&type=designation`
     );
 
-    // ⭐ Unique results
+    //  Unique results
     let list = [...new Set(data.items)];
 
-    // ⭐ Latest 4 when user not typing
+    // Latest 4 when user not typing
     if (!inputValue) {
       list = list.slice(-4);
     }
@@ -41,7 +41,7 @@ const loadDesignations = async (inputValue) => {
 const loadLocations = async (inputValue) => {
   try {
     const { data } = await axios.get(
-      `http://localhost:8000/api/v1/job/options?query=${inputValue}&type=location`
+      `https://opportunity-backend-f608.up.railway.app/api/v1/job/options?query=${inputValue}&type=location`
     );
 
     let list = [...new Set(data.items)];

@@ -20,7 +20,7 @@ const SavedJobs = () => {
     }
     const fetchSaved = async () => {
       try {
-        const res = await axios.get("http://localhost:8000/api/v1/saved/saved", {
+        const res = await axios.get("https://opportunity-backend-f608.up.railway.app/api/v1/saved/saved", {
           withCredentials: true,
         });
         dispatch(setSavedJobs(res.data.savedJobs));
