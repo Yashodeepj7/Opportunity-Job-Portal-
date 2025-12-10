@@ -48,10 +48,6 @@ const Signup = () => {
         try {
             dispatch(setLoading(true));
 
-            // const uxTimeout = setTimeout(() => {
-            //     toast.warning("Signup taking longer…");
-            //     dispatch(setLoading(false));
-            // }, 10000);
 
             const res = await axios.post(
                 `${USER_API_END_POINT}/register`,
@@ -63,7 +59,7 @@ const Signup = () => {
                 }
             );
 
-            clearTimeout(uxTimeout);
+           
 
             if (res.data.success) {
                 toast.success(res.data.message);
