@@ -71,3 +71,9 @@
     @apply bg-background text-foreground transition-colors duration-300;
   }
 }
+
+/* Ensure toast notifications appear above the global loader overlay */
+.toaster {
+  position: fixed;
+  z-index: 10001;
+}

@@ -20,7 +20,6 @@ export const register = async (req, res) => {
     }
 
     const file = req.file;
-
     if (!file) {
       return res.status(400).json({
         success: false,
@@ -28,9 +27,7 @@ export const register = async (req, res) => {
       });
     }
 
-    const fileUri = getDataUri(file);
-    const cloudResponse = await cloudinary.uploader.upload(fileUri.content);
-
+    // PEHLE check karo user exist to nahi
     const userExists = await User.findOne({ email });
     if (userExists) {
       return res.status(400).json({
@@ -39,9 +36,12 @@ export const register = async (req, res) => {
       });
     }
 
+    // Ab hi Cloudinary pe upload karo
+    const fileUri = getDataUri(file);
+    const cloudResponse = await cloudinary.uploader.upload(fileUri.content);
+
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    //  Create new user
     const newUser = await User.create({
       fullname,
       email,
@@ -53,33 +53,36 @@ export const register = async (req, res) => {
       },
     });
 
-    // SEND WELCOME EMAIL (right here)
-    try {
-      if (role === "student") {
-        await sendEmail(
-          email,
-          "Welcome to Opportunity 🎉",
-          welcomeStudentEmail(fullname)
-        );
-      } else if (role === "recruiter") {
-        await sendEmail(
-          email,
-          "Welcome Recruiter 🧑‍💼",
-          welcomeRecruiterEmail(fullname)
-        );
-      }
-    } catch (emailErr) {
-      console.log("Email sending failed:", emailErr);
+    // Email ko background me fire karo (no await)
+    if (role === "student") {
+      sendEmail(
+        email,
+        "Welcome to Opportunity 🎉",
+        welcomeStudentEmail(fullname)
+      ).catch(err => console.log("Email sending failed:", err));
+    } else if (role === "recruiter") {
+      sendEmail(
+        email,
+        "Welcome Recruiter 🧑‍💼",
+        welcomeRecruiterEmail(fullname)
+      ).catch(err => console.log("Email sending failed:", err));
     }
 
     return res.status(201).json({
       message: "Account created successfully.",
       success: true,
+      // user: newUser, // agar chahe to yeh bhi bhej sakte ho
     });
+
   } catch (error) {
-    console.log(error);
+    console.log("REGISTER ERROR:", error);
+    return res.status(500).json({
+      message: "Something went wrong while registering user.",
+      success: false,
+    });
   }
 };
+
 
 export const login = async (req, res) => {
   try {
@@ -201,7 +204,7 @@ export const updateProfile = async (req, res) => {
 
             let cloudResponse;
 
-            // ⭐ If image → upload as IMAGE
+            //  If image → upload as IMAGE
             if (isImage) {
                 cloudResponse = await cloudinary.uploader.upload(fileUri.content, {
                     folder: "profile_photos",
@@ -211,12 +214,11 @@ export const updateProfile = async (req, res) => {
                 user.profile.profilePhoto = cloudResponse.secure_url;
             }
 
-            // ⭐ If PDF → upload as RAW
-            // If PDF → upload normally with resource_type: "auto"
+            //  If PDF → upload as RAW
 if (isPDF) {
     cloudResponse = await cloudinary.uploader.upload(fileUri.content, {
         folder: "resumes",
-        resource_type: "auto",  // ⭐ magic fix ⭐
+        resource_type: "auto", // auto detects file type
         public_id: `${userId}_resume`,
         use_filename: true,
         unique_filename: false,
