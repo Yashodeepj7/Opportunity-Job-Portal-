@@ -55,7 +55,7 @@ const Signup = () => {
                 {
                     headers: { "Content-Type": "multipart/form-data" },
                     withCredentials: true,
-                    timeout: 40000,   // production safe timeout
+                    timeout: 60000,   // production safe timeout
                 }
             );
 
