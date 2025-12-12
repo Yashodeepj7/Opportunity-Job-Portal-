@@ -1,100 +1,51 @@
-🚀 Job Portal – MERN Stack
+# Job Portal (MERN Stack)
 
-A full-stack Job Portal Web Application built using the MERN Stack (MongoDB, Express, React, Node.js).
-It allows Job Seekers and Recruiters to register, login, post jobs, apply for jobs, manage profiles, search jobs, and more.
+A full-stack Job Portal Web Application built using the MERN stack.  
+It allows Job Seekers to find and apply for jobs, and Recruiters to create and manage job postings.
 
-⭐ Features
-🔐 Authentication & Authorization
+---
 
-User & Company Registration
+## Features
 
-Role-based Login (Recruiter, Job Seeker)
+### Authentication & Authorization
+- User & Company Registration
+- Role-based Login (Recruiter, Job Seeker)
+- Secure Authentication (JWT + bcrypt)
 
-Secure Authentication using JWT + bcrypt
+### Job Management
+- Create, Edit & Browse Jobs
+- Apply for Jobs
+- Multiple Search Options (Title, Location, Category)
+- Save / Bookmark Jobs
 
-Protected Routes & Private API Access
+### Company Module
+- Company Dashboard
+- Manage Posted Jobs
+- Company Profile Management
+- Image Uploads (Cloudinary)
 
-💼 Job Management
+### UI/UX
+- Dark / Light Mode
+- Fully Responsive UI (Mobile, Tablet, Desktop)
+- Clean & Modern Interface
 
-Create, Edit & Delete Jobs (Recruiter)
+### Deployment
+- Backend deployed on **Railway**
+- Frontend deployed on **Vercel**
+- Database on **MongoDB Atlas**
 
-Browse All Jobs
+---
 
-View Job Details
+## Tech Stack
 
-Apply for Jobs
+**Frontend:**  
+React, Redux Toolkit, React Router, Axios, Bootstrap / Custom CSS  
 
-Multiple Search Options
+**Backend:**  
+Node.js, Express.js, MongoDB, Mongoose, JWT, bcrypt  
 
-Title
+**Cloud:**  
+Cloudinary, MongoDB Atlas  
 
-Category
-
-Location
-
-Save / Bookmark Jobs
-
-🏢 Company Features
-
-Company Dashboard
-
-Manage Posted Jobs
-
-Manage Company Profile
-
-Cloudinary Image Uploads
-
-🎨 UI/UX
-
-Dark / Light Mode Theme
-
-Fully Responsive UI (Mobile, Tablet, Desktop)
-
-Clean & Modern Design
-
-Toast Notifications
-
-☁️ Database & Deployment
-
-MongoDB Atlas as cloud database
-
-Backend deployed on Railway
-
-Frontend deployed on Vercel
-
-Environment Variables Support
-
-🧰 Tech Stack
-Frontend
-
-React
-
-Redux Toolkit
-
-React Router
-
-Axios
-
-Bootstrap / Custom CSS
-
-Backend
-
-Node.js
-
-Express.js
-
-MongoDB
-
-Mongoose
-
-JWT Authentication
-
-bcrypt
-
-Cloud & Utilities
-
-Cloudinary (Image Uploads)
-
-Railway (Backend Hosting)
-
-Vercel (Frontend Hosting)
+**Hosting:**  
+Railway (Backend), Vercel (Frontend)
