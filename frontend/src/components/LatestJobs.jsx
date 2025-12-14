@@ -2,11 +2,12 @@ import React, { useRef, useState, useEffect } from 'react';
 import LatestJobCards from './LatestJobCards';
 import { useSelector } from 'react-redux';
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import '../App.css'
 const LatestJobs = () => {
     const { allJobs } = useSelector(store => store.job);
     const scrollRef = useRef(null);
-
+    const navigate = useNavigate();
     const [canScrollLeft, setCanScrollLeft] = useState(false);
     const [canScrollRight, setCanScrollRight] = useState(true);
 
@@ -45,7 +46,7 @@ const LatestJobs = () => {
                 </h1>
 
                 <button
-                    onClick={() => window.location.href = "/browse"}
+                    onClick={() => navigate("/browse")}
                     className="text-[#6A38C2] font-medium hover:underline"
                 >
                     View All
