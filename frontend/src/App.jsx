@@ -47,7 +47,7 @@ function App() {
     // Ye 1.5s ke liye loader dikhayega
     const timer = setTimeout(() => {
       setShowLoader(false);
-    }, 1500); // duration adjust kar sakte ho
+    }, 1100); // duration adjust kar sakte ho
 
     return () => clearTimeout(timer);
   }, []);
