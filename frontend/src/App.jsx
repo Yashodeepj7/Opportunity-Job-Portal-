@@ -19,6 +19,7 @@ import SavedJobs from './components/SavedJobs'
 import Loader from "./components/Loader";
 import { useLoading } from "./components/context/LoadingContext";
 
+import InitialLoader from './components/InitialLoader'
 const appRouter = createBrowserRouter([
   { path: '/', element: <Home /> },
   { path: '/login', element: <Login /> },
@@ -39,12 +40,24 @@ const appRouter = createBrowserRouter([
 ]);
 
 function App() {
-  const { isLoading } = useLoading();
+  const [showLoader, setShowLoader] = useState(true);
+
+  useEffect(() => {
+    // Ye 1.5s ke liye loader dikhayega
+    const timer = setTimeout(() => {
+      setShowLoader(false);
+    }, 1500); // duration adjust kar sakte ho
+
+    return () => clearTimeout(timer);
+  }, []);
   
   return (
     <ThemeProvider>
-      {isLoading && <Loader />}
+        {showLoader ? (
+        <InitialLoader />
+      ) : (
       <RouterProvider router={appRouter} />
+      )}
     </ThemeProvider>
   )
 }
