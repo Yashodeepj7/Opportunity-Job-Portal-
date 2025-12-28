@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Login from './components/auth/Login'
 import Signup from './components/auth/Signup'
 import Home from './components/Home'
@@ -37,24 +37,29 @@ const appRouter = createBrowserRouter([
 ]);
 
 function App() {
+  const [showReactLoader, setShowReactLoader] = useState(true);
 
-  // React mount hote hi HTML loader hata do
   useEffect(() => {
+    // HTML loader hatao
     const htmlLoader = document.getElementById("initial-loader");
     if (htmlLoader) {
       htmlLoader.style.opacity = "0";
       htmlLoader.style.transition = "opacity 0.3s ease";
-      setTimeout(() => {
-        htmlLoader.remove();
-      }, 300);
+      setTimeout(() => htmlLoader.remove(), 300);
     }
+
+    // React loader ko short delay ke baad hatao
+    const timer = setTimeout(() => {
+      setShowReactLoader(false);
+    }, 600); // small delay, smooth handoff
+
+    return () => clearTimeout(timer);
   }, []);
 
   return (
     <ThemeProvider>
-      {/* React loader turant dikhega */}
-      <InitialLoader />
-      <RouterProvider router={appRouter} />
+      {showReactLoader && <InitialLoader />}
+      {!showReactLoader && <RouterProvider router={appRouter} />}
     </ThemeProvider>
   );
 }
