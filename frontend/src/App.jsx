@@ -40,7 +40,7 @@ function App() {
   const [showReactLoader, setShowReactLoader] = useState(true);
 
   useEffect(() => {
-    // HTML loader hatao
+    // HTML loader remove after all js is loaded
     const htmlLoader = document.getElementById("initial-loader");
     if (htmlLoader) {
       htmlLoader.style.opacity = "0";
@@ -51,7 +51,7 @@ function App() {
     // React loader ko short delay ke baad hatao
     const timer = setTimeout(() => {
       setShowReactLoader(false);
-    }, 600); // small delay, smooth handoff
+    }, 500); // small delay, smooth handoff from HTML loader to React app
 
     return () => clearTimeout(timer);
   }, []);
