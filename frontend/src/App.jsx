@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Login from './components/auth/Login'
 import Signup from './components/auth/Signup'
 import Home from './components/Home'
@@ -16,11 +16,8 @@ import Applicants from './components/admin/Applicants'
 import ProtectedRoute from './components/admin/ProtectedRoute'
 import { ThemeProvider } from "./components/context/ThemeContext";
 import SavedJobs from './components/SavedJobs'
-
-import Loader from "./components/Loader";
-import { useLoading } from "./components/context/LoadingContext";
-
 import InitialLoader from './components/InitialLoader'
+
 const appRouter = createBrowserRouter([
   { path: '/', element: <Home /> },
   { path: '/login', element: <Login /> },
@@ -31,7 +28,6 @@ const appRouter = createBrowserRouter([
   { path: "/browse", element: <Browse /> },
   { path: "/profile", element: <Profile /> },
 
-  // admin routes
   { path:"/admin/companies", element: <ProtectedRoute><Companies/></ProtectedRoute> },
   { path:"/admin/companies/create", element: <ProtectedRoute><CompanyCreate/></ProtectedRoute> },
   { path:"/admin/companies/:id", element:<ProtectedRoute><CompanySetup/></ProtectedRoute> },
@@ -41,26 +37,26 @@ const appRouter = createBrowserRouter([
 ]);
 
 function App() {
-  const [showLoader, setShowLoader] = useState(true);
 
+  // React mount hote hi HTML loader hata do
   useEffect(() => {
-    // Ye 1.5s ke liye loader dikhayega
-    const timer = setTimeout(() => {
-      setShowLoader(false);
-    }, 1100); // duration adjust kar sakte ho
-
-    return () => clearTimeout(timer);
+    const htmlLoader = document.getElementById("initial-loader");
+    if (htmlLoader) {
+      htmlLoader.style.opacity = "0";
+      htmlLoader.style.transition = "opacity 0.3s ease";
+      setTimeout(() => {
+        htmlLoader.remove();
+      }, 300);
+    }
   }, []);
-  
+
   return (
     <ThemeProvider>
-        {showLoader ? (
-        <InitialLoader />
-      ) : (
+      {/* React loader turant dikhega */}
+      <InitialLoader />
       <RouterProvider router={appRouter} />
-      )}
     </ThemeProvider>
-  )
+  );
 }
 
 export default App;

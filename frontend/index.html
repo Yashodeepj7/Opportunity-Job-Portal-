@@ -7,7 +7,6 @@
     <title>Opportunity</title>
 
     <style>
-      /* Preloader style */
       #initial-loader {
         position: fixed;
         inset: 0;
@@ -17,9 +16,6 @@
         background: white;
         z-index: 9999;
       }
-      #initial-loader.dark {
-        background: #0d1117;
-      }
 
       .loader-animation {
         width: 40px;
@@ -27,13 +23,15 @@
         position: relative;
         transform: rotate(45deg);
       }
+
       .loader-animation div {
         position: absolute;
         width: 14px;
         height: 14px;
-        background: #f97316; /* orange-600 */
+        background: #f97316;
         animation: ping 1.2s infinite ease-in-out;
       }
+
       .loader-animation div:nth-child(2) { animation-delay: 0.15s; right: 0; top: 0; }
       .loader-animation div:nth-child(3) { animation-delay: 0.3s; right: 0; bottom: 0; }
       .loader-animation div:nth-child(4) { animation-delay: 0.45s; left: 0; bottom: 0; }
@@ -43,11 +41,9 @@
         75%, 100% { transform: scale(2); opacity: 0; }
       }
     </style>
-
   </head>
-  <body>
 
-    <!-- INITIAL PRELOADER -->
+  <body>
     <div id="initial-loader">
       <div class="loader-animation">
         <div style="top:0; left:0;"></div>
@@ -58,20 +54,6 @@
     </div>
 
     <div id="root"></div>
-
-    <script>
-      // Remove preloader once React app loads
-      window.addEventListener("load", () => {
-        const loader = document.getElementById("initial-loader");
-        if (loader) {
-          loader.style.opacity = '0';
-          loader.style.transition = 'opacity 0.5s ease';
-          setTimeout(() => {
-            loader.remove();
-          }, 1500);
-        }
-      });
-    </script>
 
     <script type="module" src="/src/main.jsx"></script>
   </body>
